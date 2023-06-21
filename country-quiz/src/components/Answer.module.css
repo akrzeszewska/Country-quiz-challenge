@@ -1,0 +1,39 @@
+.answer{
+    box-sizing: border-box;
+    position: relative;
+    left: 32px;
+    width: 400px;
+    height: 56px;
+    border: 2px solid rgba(96, 102, 208, 0.7);
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+/* .answer{
+    background-color: #F9A826;
+} */
+
+.abcd{
+    position: relative;
+    width: 16px;
+    height: 36px;
+    top: 10px;
+    left: 19px;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 36px;
+    color: rgba(96, 102, 208, 0.8);
+    display: inline-block;
+}
+.country{
+    position: relative;
+    width: 83px;
+    height: 27px;
+    top: 8px;
+    left: 82px;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 27px;
+    color: rgba(96, 102, 208, 0.8);
+    display: inline-block;
+    
+}
