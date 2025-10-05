@@ -1,17 +1,20 @@
 import classes from "./Answer.module.css";
 
 export const Answer = ({ answer, optionAbcd, onSelect, selected }) => {
-  // selected = true/false – czy ta odpowiedź jest wybrana
+  const handleSelect = () => onSelect?.(answer);
 
   return (
-    <button
-      type="button"
+    <div
       className={`${classes.answer} ${selected ? classes.selected : ""}`}
-      onClick={() => onSelect?.(answer)}
-      aria-pressed={selected}
+      role="button"
+      tabIndex={0}
+      onClick={handleSelect}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") handleSelect();
+      }}
     >
       <div className={classes.abcd}>{optionAbcd}</div>
       <div className={classes.country}>{answer}</div>
-    </button>
+    </div>
   );
 };
