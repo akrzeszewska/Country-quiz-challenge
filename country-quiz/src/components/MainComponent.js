@@ -3,28 +3,32 @@ import { QuestionsAndAnswers } from "./QuestionsAndAnswers";
 import { useEffect, useState } from "react";
 
 export const MainComponent = () => {
-    const [questions, setQuestions] = useState([]);
+  const [questions, setQuestions] = useState([]); // zawsze tablica
 
+  useEffect(() => {
+    fetch("https://opentdb.com/api.php?amount=10&category=22&type=multiple")
+      .then((res) => res.json())
+      .then((data) => {
+        const results = Array.isArray(data?.results) ? data.results : [];
+        // log tylko jeśli coś jest
+        if (results[0]?.question) {
+          console.log(results[0].question);
+        }
+        setQuestions(results);
+      })
+      .catch((err) => {
+        console.error("Fetch error:", err);
+        setQuestions([]); // fallback
+      });
+  }, []);
 
-    useEffect(() => {
-        fetch("https://opentdb.com/api.php?amount=10&category=22&type=multiple")
-          .then((response) => {
-            return response.json();
-          })
-          .then((data) => {
-            console.log(data.results[0].question);
-            setQuestions(data.results);
-          });
-      }, []);
+  // bezpieczny wybór pierwszego pytania
+  const question1 = questions.length > 0 ? questions[0] : null;
 
-      let question1 = questions[0];
-    //   question1;
-    //   console.log(myQuestion[0].question);
-
-    return (
-        <div>
-            <CountryQuiz />
-            <QuestionsAndAnswers questionToRead={question1} />
-        </div>
-    )
-}
+  return (
+    <div>
+      <CountryQuiz />
+      <QuestionsAndAnswers questionToRead={question1} />
+    </div>
+  );
+};
