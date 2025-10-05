@@ -5,6 +5,7 @@ import { Answer } from "./Answer";
 import { useState } from "react";
 
 export const QuestionsAndAnswers = ({questionToRead}) => {
+    const [question, setQuestion] = useState("");
     const [answer, setAnswer] = useState("");
     const [optionAbcd, setOptionAbcd] = useState("");
 
