@@ -1,11 +1,11 @@
+import { useState } from "react";
 import { Question } from "./Question";
 import classes from "./QuestionsAndAnswers.module.css";
 import ImageUndrawAdventure from "../pictures/undraw_adventure_4hum_1.svg";
 import { Answer } from "./Answer";
-import { useState } from "react";
 
 export const QuestionsAndAnswers = ({ questionToRead }) => {
-  const [chosen, setChosen] = useState(null); // tu trzymamy wybraną odpowiedź
+  const [chosen, setChosen] = useState(null);
 
   if (!questionToRead) {
     return (
@@ -16,15 +16,14 @@ export const QuestionsAndAnswers = ({ questionToRead }) => {
     );
   }
 
-  // 3 błędne + 1 poprawna
+  // Kolejność bez tasowania: najpierw 3 błędne, potem poprawna
   const allAnswers = [
     ...questionToRead.incorrect_answers,
     questionToRead.correct_answer,
   ];
 
-  // proste tasowanie
-  // const shuffled = allAnswers.sort(() => Math.random() - 0.5);
-  const labels = ["A", "B", "C", "D"];
+  // Etykiety A–D (przytnij do długości odpowiedzi na wszelki wypadek)
+  const labels = ["A", "B", "C", "D"].slice(0, allAnswers.length);
 
   const handleSelect = (answer) => {
     setChosen(answer);
@@ -38,7 +37,7 @@ export const QuestionsAndAnswers = ({ questionToRead }) => {
 
       <Question questionToRead={questionToRead} />
 
-
+      {allAnswers.map((opt, i) => (
         <Answer
           key={i}
           optionAbcd={labels[i]}
@@ -46,13 +45,13 @@ export const QuestionsAndAnswers = ({ questionToRead }) => {
           onSelect={handleSelect}
           selected={chosen === opt}
         />
+      ))}
 
-
-      /* prosty feedback po wyborze */
+      {/* prosty feedback po wyborze */}
       {chosen && (
         <p style={{ marginTop: 12 }}>
           Wybrałaś: <strong>{chosen}</strong>{" "}
-          {isCorrect ? "✅ Dobrze!" : "❌ Źle – spróbuj dalej"}
+          {isCorrect ? "✅ Dobrze!" : "❌ Spróbuj dalej"}
         </p>
       )}
     </div>
