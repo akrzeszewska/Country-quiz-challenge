@@ -13,7 +13,7 @@ export const MainComponent = () => {
           })
           .then((data) => {
             console.log(data.results[0].question);
-            setMyQuestion(data.results);
+            setQuestions(data.results);
           });
       }, []);
 
