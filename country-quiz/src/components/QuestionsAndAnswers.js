@@ -38,15 +38,15 @@ export const QuestionsAndAnswers = ({ questionToRead }) => {
 
       <Question questionToRead={questionToRead} />
 
-      // {shuffled.map((opt, i) => (
-      //   <Answer
-      //     key={i}
-      //     optionAbcd={labels[i]}
-      //     answer={opt}
-      //     onSelect={handleSelect}
-      //     selected={chosen === opt}
-      //   />
-      // ))}
+
+        <Answer
+          key={i}
+          optionAbcd={labels[i]}
+          answer={opt}
+          onSelect={handleSelect}
+          selected={chosen === opt}
+        />
+
 
       /* prosty feedback po wyborze */
       {chosen && (
