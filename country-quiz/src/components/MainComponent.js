@@ -3,7 +3,7 @@ import { QuestionsAndAnswers } from "./QuestionsAndAnswers";
 import { useEffect, useState } from "react";
 
 export const MainComponent = () => {
-    const [myQuestion, setMyQuestion] = useState([]);
+    const [questions, setQuestions] = useState([]);
 
 
     useEffect(() => {
@@ -17,7 +17,7 @@ export const MainComponent = () => {
           });
       }, []);
 
-      let question1 = myQuestion[0];
+      let question1 = questions[0];
     //   question1;
     //   console.log(myQuestion[0].question);
 
