@@ -23,7 +23,7 @@ export const QuestionsAndAnswers = ({ questionToRead }) => {
   ];
 
   // proste tasowanie
-  const shuffled = allAnswers.sort(() => Math.random() - 0.5);
+  // const shuffled = allAnswers.sort(() => Math.random() - 0.5);
   const labels = ["A", "B", "C", "D"];
 
   const handleSelect = (answer) => {
