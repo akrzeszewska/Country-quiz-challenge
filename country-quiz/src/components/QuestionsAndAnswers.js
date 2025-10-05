@@ -48,7 +48,7 @@ export const QuestionsAndAnswers = ({ questionToRead }) => {
       //   />
       // ))}
 
-      {/* prosty feedback po wyborze */}
+      /* prosty feedback po wyborze */
       {chosen && (
         <p style={{ marginTop: 12 }}>
           Wybrałaś: <strong>{chosen}</strong>{" "}
